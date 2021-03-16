@@ -1,0 +1,11 @@
+{
+  "name": "testcafe_assessment",
+  "version": "1.0.0",
+  "description": "Assessment - session 1 test case workshop",
+  "main": "index.js",
+  "scripts": {
+    "test-all": "testcafe CHROME,FIREFOX,EDGE ./page_model/tests"
+  },
+  "author": "Francisca Chulim",
+  "license": "ISC"
+}
