@@ -6,7 +6,7 @@ import OverviewPage from '../pages/OverviewPage'
 import { CREDENTIALS } from '../data/Constants'
 import { USERINFO } from '../data/Constants'
 
-fixture('Cart page feature testing')
+fixture('Checkout: Your Information feature testing')
   .page(`https://www.saucedemo.com/`)
   .beforeEach(async t => {
     await LoginPage.submitLoginForm(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
@@ -41,7 +41,7 @@ fixture('Cart page feature testing')
     .expect(CheckoutPage.errorMessage.innerText).eql('Error: Postal Code is required')
   })
 
-  test('8 Fill user information', async t => {
+  test('8. Fill user information', async t => {
     await t
     .typeText(CheckoutPage.lblfirstname, USERINFO.USERINFO.firstname)
     .typeText(CheckoutPage.lbllastname, USERINFO.USERINFO.lastname)
@@ -49,7 +49,16 @@ fixture('Cart page feature testing')
     await CheckoutPage.Continue();
   })
 
-  test('9 Final order items', async t => {
+  fixture('Checkout: Overview feature testing')
+  .page(`https://www.saucedemo.com/`)
+  .beforeEach(async t => {
+    await LoginPage.submitLoginForm(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
+    await InventoryPage.addMultipleItemsToCart();
+    await InventoryPage.openCart();
+    await CartPage.Checkout();
+  })
+
+  test('9. Final order items', async t => {
     await t
     .typeText(CheckoutPage.lblfirstname, USERINFO.USERINFO.firstname)
     .typeText(CheckoutPage.lbllastname, USERINFO.USERINFO.lastname)
@@ -58,7 +67,7 @@ fixture('Cart page feature testing')
     await OverviewPage.VerifyItems();
   })
 
-  test('10 Complete a purchase', async t => {
+  test('10. Complete a purchase', async t => {
     await t
     .typeText(CheckoutPage.lblfirstname, USERINFO.USERINFO.firstname)
     .typeText(CheckoutPage.lbllastname, USERINFO.USERINFO.lastname)

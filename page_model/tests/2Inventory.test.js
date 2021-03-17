@@ -4,7 +4,7 @@ import { CREDENTIALS } from '../data/Constants'
 import { MULTITEMS } from '../data/Constants'
 import { standard_user} from '../data/Roles'
 
-fixture('Products page feature testing')
+fixture('Inventory feature testing')
   .page(`https://www.saucedemo.com/`)
   .beforeEach(async t => {
     await t

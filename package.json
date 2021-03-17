@@ -4,7 +4,7 @@
   "description": "Assessment - session 1 test case workshop",
   "main": "index.js",
   "scripts": {
-    "test-all": "testcafe CHROME,FIREFOX,EDGE ./page_model/tests"
+    "test-all": "testcafe CHROME,FIREFOX,EDGE ./page_model/tests -r html:report.html"
   },
   "author": "Francisca Chulim",
   "license": "ISC"
